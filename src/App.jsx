@@ -185,7 +185,7 @@ export default function App() {
                 ]} barSize={50}>
                   <CartesianGrid strokeDasharray="3 3" stroke={SC.gridLine} />
                   <XAxis dataKey="name" stroke={SC.textSecondary} fontSize={11} />
-                  <YAxis stroke={SC.textSecondary} fontSize={11} tickFormatter={v => "$" + fmt(v)} domain={[0, 40000]} ticks={[0, 5000, 10000, 15000, 20000, 25000, 30000, 35000, 40000]} />
+                  <YAxis stroke={SC.textSecondary} fontSize={11} tickFormatter={v => "$" + fmt(v)} domain={[0, 40000]} ticks={[0, 5000, 10000, 15000, 20000, 25000, 30000, 35000]} />
                   <Tooltip contentStyle={ttStyle} itemStyle={ttItemStyle} labelStyle={ttLabelStyle} formatter={v => fmtD(v)} />
                   <Bar dataKey="value" radius={[6, 6, 0, 0]} label={{ position: "top", fill: SC.mist, fontSize: 13, fontWeight: 600, formatter: v => fmtD(v) }}><Cell fill={SC.aquaGreen} /><Cell fill={SC.tidalBlue} /><Cell fill={SC.slateTeal} /></Bar>
                 </BarChart>
