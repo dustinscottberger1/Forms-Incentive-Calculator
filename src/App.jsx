@@ -72,7 +72,7 @@ export default function App() {
     const probAbove = 1 - normalCDF(sQualOmap, mean, std);
     const estQual = Math.max(0, Math.round(probAbove * n));
     const actualQual = empSummaries.filter(e => e.hasRecent && e.recentOmap >= sQualOmap && e.recentUtil >= 80).length;
-    const perEmp = actualQual > 0 ? pool / actualQual : 0;
+    const perEmp = n > 0 ? pool / n : 0;
     const lo = Math.max(0, mean - 3.5 * std), hi = mean + 3.5 * std;
     const step = (hi - lo) / 80;
     const distData = [];
@@ -181,7 +181,7 @@ export default function App() {
                 <BarChart data={[
                   { name: "Labor $ saved", value: calc.pool },
                   { name: "→ Incentive pool", value: calc.pool },
-                  { name: `→ Per employee (×${calc.actualQual})`, value: calc.perEmp }
+                  { name: `→ Per employee (×${calc.n})`, value: calc.perEmp }
                 ]} barSize={50}>
                   <CartesianGrid strokeDasharray="3 3" stroke={SC.gridLine} />
                   <XAxis dataKey="name" stroke={SC.textSecondary} fontSize={11} />
