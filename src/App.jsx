@@ -93,6 +93,8 @@ export default function App() {
   const fmtO = n => isNaN(n) || n === 0 ? "—" : n.toFixed(2);
 
   const ttStyle = { background: SC.card, border: `1px solid ${SC.cardBorder}`, borderRadius: 8, color: SC.textPrimary };
+  const ttItemStyle = { color: SC.mist };
+  const ttLabelStyle = { color: SC.paleBlue };
 
   return (
     <div style={{ minHeight:"100vh", background:SC.bg, color:SC.textPrimary, padding:"20px 24px", fontFamily:"system-ui, -apple-system, sans-serif" }}>
@@ -144,7 +146,7 @@ export default function App() {
                     <CartesianGrid strokeDasharray="3 3" stroke={SC.gridLine} />
                     <XAxis dataKey="name" stroke={SC.textSecondary} fontSize={12} />
                     <YAxis stroke={SC.textSecondary} fontSize={11} tickFormatter={v => fmt(v)} />
-                    <Tooltip contentStyle={ttStyle} formatter={v => [fmt(v) + " hrs", "Hours"]} />
+                    <Tooltip contentStyle={ttStyle} itemStyle={ttItemStyle} labelStyle={ttLabelStyle} formatter={v => [fmt(v) + " hrs", "Hours"]} />
                     <Bar dataKey="hours" radius={[6, 6, 0, 0]} label={{ position: "top", fill: SC.mist, fontSize: 13, fontWeight: 600, formatter: v => fmt(v) }}><Cell fill={SC.slateTeal} /><Cell fill={SC.aquaGreen} /></Bar>
                   </BarChart>
                 </ResponsiveContainer>
@@ -161,7 +163,7 @@ export default function App() {
                     <CartesianGrid strokeDasharray="3 3" stroke={SC.gridLine} />
                     <XAxis dataKey="omap" stroke={SC.textSecondary} fontSize={11} />
                     <YAxis hide />
-                    <Tooltip contentStyle={ttStyle} formatter={v => v.toFixed(4)} />
+                    <Tooltip contentStyle={ttStyle} itemStyle={ttItemStyle} labelStyle={ttLabelStyle} formatter={v => v.toFixed(4)} />
                     <Area type="monotone" dataKey="density" stroke={SC.slateTeal} fill={SC.slateTeal} fillOpacity={0.3} name="All employees" />
                     <Area type="monotone" dataKey="qual" stroke={SC.aquaGreen} fill={SC.aquaGreen} fillOpacity={0.35} name="Qualifying" />
                   </AreaChart>
@@ -183,8 +185,8 @@ export default function App() {
                 ]} barSize={50}>
                   <CartesianGrid strokeDasharray="3 3" stroke={SC.gridLine} />
                   <XAxis dataKey="name" stroke={SC.textSecondary} fontSize={11} />
-                  <YAxis stroke={SC.textSecondary} fontSize={11} tickFormatter={v => "$" + fmt(v)} domain={[0, 25000]} ticks={[0, 5000, 10000, 15000, 20000, 25000]} />
-                  <Tooltip contentStyle={ttStyle} formatter={v => fmtD(v)} />
+                  <YAxis stroke={SC.textSecondary} fontSize={11} tickFormatter={v => "$" + fmt(v)} domain={[0, 40000]} ticks={[0, 5000, 10000, 15000, 20000, 25000, 30000, 35000, 40000]} />
+                  <Tooltip contentStyle={ttStyle} itemStyle={ttItemStyle} labelStyle={ttLabelStyle} formatter={v => fmtD(v)} />
                   <Bar dataKey="value" radius={[6, 6, 0, 0]} label={{ position: "top", fill: SC.mist, fontSize: 13, fontWeight: 600, formatter: v => fmtD(v) }}><Cell fill={SC.aquaGreen} /><Cell fill={SC.tidalBlue} /><Cell fill={SC.slateTeal} /></Bar>
                 </BarChart>
               </ResponsiveContainer>
